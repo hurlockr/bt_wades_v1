@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace bt-wades-v1-client build",
+    "dev": "yarn workspace bt-wades-v1-server dev",
+    "dev:debug": "yarn workspace bt-wades-v1-server dev:debug",
+    "heroku-postbuild": "yarn workspace bt-wades-v1-client build",
+    "start": "yarn workspace bt-wades-v1-server start",
+    "dev:cypress": "yarn workspace bt-wades-v1-server dev:e2e",
+    "e2e:open": "yarn workspace bt-wades-v1-e2e e2e:open",
+    "e2e:run": "yarn workspace bt-wades-v1-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.15"
+  }
+}
