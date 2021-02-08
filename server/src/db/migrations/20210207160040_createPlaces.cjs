@@ -17,7 +17,7 @@ exports.up = async (knex) => {
     table.json("location")
     table.json("hours")
     table.string("yelpId")
-    table.json("reviewId")
+    table.json("reviewId").unsigned().notNullable().index().references("reviews.id")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })
