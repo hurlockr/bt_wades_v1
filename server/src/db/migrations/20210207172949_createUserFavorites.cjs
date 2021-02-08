@@ -10,6 +10,8 @@ exports.up = async (knex) => {
     table.bigIncrements("id").primary()
     table.bigInteger("placeId").unsigned().notNullable().index().references("places.id")
     table.bigInteger("userId").unsigned().notNullable().index().references("users.id")
+    table.string("notes")
+    table.integer("personalRating")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })

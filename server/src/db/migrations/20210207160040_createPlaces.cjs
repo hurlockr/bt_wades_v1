@@ -7,17 +7,16 @@
  */
 exports.up = async (knex) => {
   return knex.schema.createTable("places", (table) => {
-    table.bigIncrements("id").primary()
+    table.bigIncrements("id").primary() //uuid?
     table.string("name").notNullable()
-    table.string("location").notNullable()
-    table.string("rating")
+    table.json("type") //arr?
+    table.string("address").notNullable()
+    table.integer("rating")
     table.string("image")
     table.string("price")
     table.string("url")
-    table.json("location")
     table.json("hours")
-    table.string("yelpId")
-    table.json("reviewId").unsigned().notNullable().index().references("reviews.id")
+    table.json("externalReviews")
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })
