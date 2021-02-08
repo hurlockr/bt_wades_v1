@@ -6,7 +6,7 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-  return knex.schema.createTable("userFavorites", (table) => {
+  return knex.schema.createTable("userFavoritePlaces", (table) => {
     table.bigIncrements("id").primary()
     table.bigInteger("placeId").unsigned().notNullable().index().references("places.id")
     table.bigInteger("userId").unsigned().notNullable().index().references("users.id")
@@ -21,5 +21,5 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
-  return knex.schema.dropTableIfExists("userFavorites")
+  return knex.schema.dropTableIfExists("userFavoritePlaces")
 }
