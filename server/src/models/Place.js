@@ -23,7 +23,7 @@ class Place extends Model {
   }
 
   static get relationMappings() {
-    const { Review } = require("./index")
+    const { Review, User, UserFavoritePlace } = require("./index")
 
     return {
       reviews: {
@@ -32,6 +32,26 @@ class Place extends Model {
         join: {
           from: "places.id",
           to: "reviews.placeId"
+        }
+      },
+      users: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: "places.id",
+          through: {
+            from: "userFavoritePlaces.placeId",
+            to: "userFavoritePlaces.userId"
+          },
+          to: "users.id"
+        }
+      },
+      userFavoritePlaces: {
+        relation: Model.HasManyRelation,
+        modelClass: UserFavoritePlace,
+        join: {
+          from: "places.id",
+          to: "userFavoritePlaces.placeId"
         }
       }
     }

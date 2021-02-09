@@ -2,5 +2,6 @@
 const User = require("./User.js")
 const Place = require("./Place.js")
 const Review = require("./Review.js")
+const UserFavoritePlace = require("./UserFavoritePlace")
 
-module.exports = {User, Place, Review};
+module.exports = { User, Place, Review, UserFavoritePlace };

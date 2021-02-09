@@ -36,6 +36,33 @@ class User extends uniqueFunc(Model) {
     };
   }
 
+  static get relationMappings() {
+    const { Place, UserFavoritePlace } = require ("./index")
+
+    return {
+      places: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Place,
+        join: {
+          from: "users.id",
+          through: {
+            from: "userFavoritePlaces.userId",
+            to: "userFavoritePlaces.placeId"
+          },
+          to: "places.id"
+        }
+      },
+      userFavoritePlaces: {
+        relation: Model.HasManyRelation,
+        modelClass: UserFavoritePlace,
+        join: {
+          from: "users.id",
+          to: "userFavoritePlaces.userId"
+        }
+      }
+    }
+  }
+
   $formatJson(json) {
     const serializedJson = super.$formatJson(json);
 
