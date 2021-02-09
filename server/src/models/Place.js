@@ -1,4 +1,4 @@
-const Model = require ("./Model")
+const Model = require("./Model")
 
 class Place extends Model {
   static get tableName() {
@@ -18,6 +18,21 @@ class Place extends Model {
         price: { type: "string" },
         url: { type: "string" },
         hours: { type: "string" }
+      }
+    }
+  }
+
+  static get relationMappings() {
+    const { Review } = require("./index")
+
+    return {
+      reviews: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: "places.id",
+          to: "reviews.placeId"
+        }
       }
     }
   }

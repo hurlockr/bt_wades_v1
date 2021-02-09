@@ -18,6 +18,21 @@ class Review extends Model {
       }
     }
   }
+
+  static get relationMappings() {
+    const { Place } = require ("./index")
+
+    return {
+      place: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Place,
+        join: {
+          from: "reviews.placeId",
+          to: "place.id"
+        }
+      }
+    }
+  }
 }
 
 module.exports = Review
