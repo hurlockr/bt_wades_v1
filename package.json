@@ -18,8 +18,5 @@
   },
   "engines": {
     "node": "^14.15"
-  },
-  "dependencies": {
-    "yelp-fusion": "^3.0.0"
   }
 }
