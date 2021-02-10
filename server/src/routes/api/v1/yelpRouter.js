@@ -6,7 +6,6 @@ const yelpRouter = new express.Router()
 yelpRouter.get("/", async (req, res) => {
   try {
     const response = await YelpClient.getPlaces()
-    // const parsedResponse = JSON.parsed(response)
     return res.status(200).json({ response })
   } catch (error) {
     return res.status(500).json({ errors: error })
