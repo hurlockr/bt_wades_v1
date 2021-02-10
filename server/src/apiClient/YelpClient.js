@@ -10,7 +10,7 @@ class YelpClient {
       const url = `https://api.yelp.com/v3/businesses/search?location=Boston`
       const apiResponse = await got(url, {
         'headers': {
-          'Authorization': 'Bearer oUeuQhjAB0oB6Qe0d1Tw34Rp2_E6tFE0aXpZHa-3hJbAdN-uMcPdK5aHIs-gNFCd9VJtV8T0tyO1BMokpXobe6PK58ptnAnCAZilraFQnu9z8-0sKMn_K0bTEIIVYHYx'
+          'Authorization': `Bearer ${yelpApiKey}`
         }
       })
       console.log(apiResponse)
