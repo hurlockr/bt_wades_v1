@@ -3,7 +3,7 @@ import YelpClient from "../../../apiClient/YelpClient.js"
 
 const yelpRouter = new express.Router()
 
-yelpRouter.get("/", async (req, res) => {
+yelpRouter.get("/yelp", async (req, res) => {
   try {
     const response = await YelpClient.getPlaces()
     return res.status(200).json({ response })
