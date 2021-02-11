@@ -1,7 +1,10 @@
 import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
 
 
 const YelpRequestForm = (props) => {
+  let body;
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const [requestParams, setRequestParams] = useState({
     zip: "",
     category: "",
@@ -29,17 +32,23 @@ const YelpRequestForm = (props) => {
           throw error
         } 
       } else {
-        const body = await response.json() //should be giant object of results (but now parsed after being cleaned in the router)
-        <Redirect 
-          to={{
-            pathname: "/locations",
-            state: { body } //props.location.state.body is how this will be retreived in the LocationsList.js
-          }}
-        />
+        body = await response.json()
+        setShouldRedirect(true)
+        //should be giant object of results (but now parsed after being cleaned in the router)
+        //props.location.state.body is how this will be retrieved in the LocationsList.js
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
+    if (shouldRedirect) {
+      return (<Redirect 
+        to={{
+          pathname: "/places",
+          state: { body } 
+        }}
+      />)
+    }
+    
   }
 
   const handleInputChange = (event) => {

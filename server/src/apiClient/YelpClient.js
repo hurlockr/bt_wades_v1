@@ -16,6 +16,7 @@ class YelpClient {
         }
       })
       const responseBody = apiResponse.body
+      responseBody = JSON.parse(responseBody)
       console.log(responseBody)
       return responseBody //going to return giant array of objects
     } catch (error) {
