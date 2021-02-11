@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 
+
 const YelpRequestForm = (props) => {
   const [requestParams, setRequestParams] = useState({
     zip: "",
@@ -11,10 +12,29 @@ const YelpRequestForm = (props) => {
   const queryYelp = async (requestPayload) => {
     try {
       const response = await fetch("/api/v1/yelp", {
-        
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(requestPayload)
       })
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          return setErrors(newErrors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
+        } 
+      } else {
+        const body = await response.json()
+        // const updatedQueryParams 
+        // psudo code this
+      }
     } catch (error) {
-      
+      console.error(`Error in fetch: ${error.message}`)
     }
   }
 
@@ -25,12 +45,18 @@ const YelpRequestForm = (props) => {
     })
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    props.queryYelp(requestParams)
+  }
+
   return (
     <div className="form">
-      <form >
-        <label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="zip">
           <p>Zipcode:</p>
           <input 
+          id="zip"
           type="text"
           name="zip"
           placeholder="what's your zip?"
@@ -38,9 +64,10 @@ const YelpRequestForm = (props) => {
           value={requestParams.zip}
           />
         </label>
-        <label>
+        <label htmlFor="category">
           <p>Category:</p>
           <input 
+          id="category"
           type="text"
           name="category"
           placeholder="what type of place?"
@@ -48,18 +75,20 @@ const YelpRequestForm = (props) => {
           value={requestParams.category}
           />
         </label>
-        <label>
+        <label htmlFor="term">
           <p>Term:</p>
           <input 
+          id="term"
           type="text"
           name="term"
           placeholder="name of restaurant, type of food, type of venue"
           value={requestParams.term}
           />
         </label>
-        <label>
+        <label htmlFor="price">
           <p>Price:</p>
           <input 
+          id="price"
           type="text"
           name="price"
           placeholder="let's discuss the bottom line ($ signs only)"
