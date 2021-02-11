@@ -1,5 +1,6 @@
 import got from "got"
 import config from "../config.js"
+import yelpParser from "./yelpParser.js"
 
 
 const yelpApiKey = config.yelpApiKey.secret
@@ -16,7 +17,7 @@ class YelpClient {
         }
       })
       const responseBody = apiResponse.body
-      responseBody = JSON.parse(responseBody)
+      // yelpParser(responseBody)
       console.log(responseBody)
       return responseBody //going to return giant array of objects
     } catch (error) {
