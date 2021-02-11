@@ -29,9 +29,13 @@ const YelpRequestForm = (props) => {
           throw error
         } 
       } else {
-        const body = await response.json()
-        // const updatedQueryParams 
-        // psudo code this
+        const body = await response.json() //should be giant object of results (but now parsed after being cleaned in the router)
+        <Redirect 
+          to={{
+            pathname: "/locations",
+            state: { body } //props.location.state.body is how this will be retreived in the LocationsList.js
+          }}
+        />
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -47,59 +51,65 @@ const YelpRequestForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    props.queryYelp(requestParams)
+    queryYelp(requestParams)
   }
 
-  return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="zip">
-          <p>Zipcode:</p>
-          <input 
-          id="zip"
-          type="text"
-          name="zip"
-          placeholder="what's your zip?"
-          onChange={handleInputChange}
-          value={requestParams.zip}
-          />
-        </label>
-        <label htmlFor="category">
-          <p>Category:</p>
-          <input 
-          id="category"
-          type="text"
-          name="category"
-          placeholder="what type of place?"
-          onChange={handleInputChange}
-          value={requestParams.category}
-          />
-        </label>
-        <label htmlFor="term">
-          <p>Term:</p>
-          <input 
-          id="term"
-          type="text"
-          name="term"
-          placeholder="name of restaurant, type of food, type of venue"
-          value={requestParams.term}
-          />
-        </label>
-        <label htmlFor="price">
-          <p>Price:</p>
-          <input 
-          id="price"
-          type="text"
-          name="price"
-          placeholder="let's discuss the bottom line ($ signs only)"
-          value={requestParams.price}
-          />
-        </label>
-        <div>
-          <input className="button" type="submit" value="Submit"/>
+return (
+  <div className="submission-form grid-container">
+    <div className="grid-x grid-padding-x">
+      <div className="small-12 medium-6 cell">
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="zip">
+              <p>Zipcode:</p>
+              <input 
+              id="zip"
+              type="text"
+              name="zip"
+              placeholder="what's your zip?"
+              onChange={handleInputChange}
+              value={requestParams.zip}
+              />
+            </label>
+            <label htmlFor="category">
+              <p>Category:</p>
+              <input 
+              id="category"
+              type="text"
+              name="category"
+              placeholder="what type of place?"
+              onChange={handleInputChange}
+              value={requestParams.category}
+              />
+            </label>
+            <label htmlFor="term">
+              <p>Term:</p>
+              <input 
+              id="term"
+              type="text"
+              name="term"
+              placeholder="name of restaurant, type of food, type of venue"
+              onChange={handleInputChange}
+              value={requestParams.term}
+              />
+            </label>
+            <label htmlFor="price">
+              <p>Price:</p>
+              <input 
+              id="price"
+              type="text"
+              name="price"
+              placeholder="let's discuss the bottom line ($ signs only)"
+              onChange={handleInputChange}
+              value={requestParams.price}
+              />
+            </label>
+            <div>
+              <input className="button" type="submit" value="Submit"/>
+            </div>
+        </form>
         </div>
-      </form> 
-    </div>
+      </div>  
+  </div>
   )
 } 
 
