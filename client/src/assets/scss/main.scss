@@ -12,3 +12,29 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+.top-bar {
+  background: #E61C5D;
+
+  .menu {
+    background: #E61C5D;
+    padding: .5rem;
+  }
+
+  .top-bar-center {
+    flex: 1;
+  }
+
+  a {
+    color: $white;
+  }
+}
+
+form {
+  padding: 1rem;
+}
+
+
+
+
+
