@@ -17,24 +17,9 @@ yelpRouter.get("/", async (req, res) => {
 
 yelpRouter.post("/", async (req, res) => {
   const { body } = req
-  console.log(req)
-
-  console.log(body)
-  // console.log(req.params)
-  // const formInput = body
-  // const { zip, category,term, price } = formInput
 
   try {
     const yelpQueryResults = await YelpClient.getPlaces(body)
-    let yelpObjects = []
-    // yelpQueryResults.businesses.forEach(business => {
-      // push a custom object onto yelp objects that is cleaned up
-      // business.info.name = name
-        // insert other objects you'd need for your places data table
-          // look for ignition activities that go over finding nested data 
-    // })
-    // yelpQueryResults is currently JSON, need to parse using JSON.parse() 
-    // from here I could clean up Yelp query results --> but this is a dream --> maybe with a serializer/parser? 
     return res.status(201).json({ yelpQueryResults }) 
   } catch (error) {
     if (error instanceof ValidationError) {
