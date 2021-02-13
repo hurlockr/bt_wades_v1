@@ -9,6 +9,7 @@ class YelpClient {
   static async getPlaces(searchParams) {
     try {
       const url = `https://api.yelp.com/v3/businesses/search?location=${searchParams.zip}&price=${searchParams.price}&term=${searchParams.term}&categories=${searchParams.category}`
+
       const apiResponse = await got(url, {
         'headers': {
           'Authorization': `Bearer ${yelpApiKey}`
