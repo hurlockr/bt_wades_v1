@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
+import logo from "../../images/logo.png"
+
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
@@ -24,7 +26,6 @@ const TopBar = ({ user }) => {
     <div className="top-bar topbar-center-logo" id="topbar-center-logo">
       <div className="top-bar-left">
         <ul className="menu vertical medium-horizontal">
-          {/* <li className="menu-text">The Wonderful Horrible Dates App</li> */}
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -32,7 +33,7 @@ const TopBar = ({ user }) => {
       </div>
       <div className="top-bar-center">
         <div className="logo">
-          <a><img src="https://placehold.it/100x39" alt="Wades Logo" /></a>
+          <Link to="/"><img src={logo} alt="Wades Logo" /></Link>
         </div>
       </div>
       <div className="top-bar-right">
