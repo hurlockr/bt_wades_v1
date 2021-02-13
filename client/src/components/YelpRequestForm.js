@@ -35,12 +35,7 @@ const YelpRequestForm = (props) => {
       } else {
         const body = await response.json()
         setYelpParams(body)
-        console.log("BODY")
-        console.log(body)
-        
-        // yelpQueryResults = body.yelpQueryResults
         setShouldRedirect(true)
-        
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -48,9 +43,6 @@ const YelpRequestForm = (props) => {
     
     }
     if (shouldRedirect) {
-      console.log(shouldRedirect)
-      console.log("YELP PARAMS")
-      console.log(yelpParams)
       return(<Redirect 
         to={{
           pathname: "/places",
