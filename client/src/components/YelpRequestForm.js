@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom"
 
 
 const YelpRequestForm = (props) => {
-  let body;
+  const [yelpParams, setYelpParams] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [requestParams, setRequestParams] = useState({
     zip: "",
@@ -33,10 +33,11 @@ const YelpRequestForm = (props) => {
           throw error
         } 
       } else {
-        body = await response.json()
+        const body = await response.json()
+        setYelpParams(body)
         console.log("BODY")
-
         console.log(body)
+        
         // yelpQueryResults = body.yelpQueryResults
         setShouldRedirect(true)
         
@@ -48,13 +49,14 @@ const YelpRequestForm = (props) => {
     }
     if (shouldRedirect) {
       console.log(shouldRedirect)
+      console.log("YELP PARAMS")
+      console.log(yelpParams)
       return(<Redirect 
         to={{
           pathname: "/places",
-          state: { places: body } 
+          state: { places: yelpParams } 
         }}
       />)
-    
   }
 
   const handleInputChange = (event) => {
