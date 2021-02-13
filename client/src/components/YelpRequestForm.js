@@ -11,8 +11,9 @@ const YelpRequestForm = (props) => {
     term: "",
     price: ""
   })
-
+  
   const queryYelp = async (requestPayload) => {
+    
     try {
       const response = await fetch("/api/v1/yelp", {
         method: "POST",
@@ -33,21 +34,26 @@ const YelpRequestForm = (props) => {
         } 
       } else {
         body = await response.json()
+        console.log("BODY")
+
+        console.log(body)
+        // yelpQueryResults = body.yelpQueryResults
         setShouldRedirect(true)
-        //should be giant object of results (but now parsed after being cleaned in the router)
-        //props.location.state.body is how this will be retrieved in the LocationsList.js
+        
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
+    
+    }
     if (shouldRedirect) {
-      return (<Redirect 
+      console.log(shouldRedirect)
+      return(<Redirect 
         to={{
           pathname: "/places",
-          state: { body } 
+          state: { places: body } 
         }}
       />)
-    }
     
   }
 

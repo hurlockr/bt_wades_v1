@@ -15,8 +15,9 @@ class YelpClient {
         }
       })
       const responseBody = apiResponse.body
-  
       const parsedYelpData = YelpParser.parseData(responseBody)
+      console.log('YELP CLIENT PARSED YELP DATA')
+      console.log(parsedYelpData)
       return parsedYelpData
     } catch (error) {
       return { error: error.message }

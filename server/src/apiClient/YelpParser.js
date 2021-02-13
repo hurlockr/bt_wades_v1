@@ -17,8 +17,6 @@ class YelpParser {
       let category = business.categories[0].title
       let distance = business.distance
 
-
-
       return {
         id, name, url, rating, image, location, price, category, distance
       }
