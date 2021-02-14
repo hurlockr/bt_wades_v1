@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Rating from "@material-ui/lab/Rating";
+import Typography from '@material-ui/core/Typography';
+
 
 const PlaceTile = (props) => {
   const { distance, id, image, location, name, price, rating, url } = props
   const getLocation = location.join(' ')
+  
+  
+  
+  
   
   return (
     <div className="cell">
@@ -17,10 +24,11 @@ const PlaceTile = (props) => {
         </div>
         <div className="card-section">
         <p>Price: {price}</p>
-        <p>Rating: {rating}</p>
         <p>Address: {getLocation}</p>
         <a href={url}>See their Business on Yelp</a>
         <p>Distance from you: {distance}</p>
+        <Typography component="legend">Read only</Typography>
+        <Rating name="read-only" value={rating} precision={0.5} readOnly />
         </div>
       </div>
     </div>
