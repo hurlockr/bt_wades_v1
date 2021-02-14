@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import Rating from "@material-ui/lab/Rating";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
+import Icons from "@material-ui/icons";
 
 
 const PlaceTile = (props) => {
   const { distance, id, image, location, name, price, rating, url } = props
   const getLocation = location.join(' ')
   
-  
-  
-  
-  
+  //each time you click add the favorites you concatinate then add to state 
   return (
     <div className="cell">
       <div className="card">
@@ -24,11 +22,12 @@ const PlaceTile = (props) => {
         </div>
         <div className="card-section">
         <p>Price: {price}</p>
+        <Typography component="legend">Rating</Typography>
+        <Rating name="read-only" value={rating} precision={0.5} readOnly />
         <p>Address: {getLocation}</p>
         <a href={url}>See their Business on Yelp</a>
         <p>Distance from you: {distance}</p>
-        <Typography component="legend">Read only</Typography>
-        <Rating name="read-only" value={rating} precision={0.5} readOnly />
+        
         </div>
       </div>
     </div>
