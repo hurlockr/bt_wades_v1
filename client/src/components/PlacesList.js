@@ -24,9 +24,10 @@ const PlacesList = (props) => {
   })
 
   return (
-    <div>
-    <h1>Hello from Places List!</h1>
-    {placeTiles}
+    <div className="grid-container">
+      <div className="grid-x grid-margin-x small-up-2 medium-up-3">
+          {placeTiles}
+      </div>
     </div>
   )
 }
