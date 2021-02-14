@@ -119,9 +119,9 @@ return (
             />
           </label>
         </div>
-          <div>
-            <input className="button" type="submit" value="Submit"/>
-          </div>
+        <div className="button1">
+          <input className="button" type="submit" value="Submit"/>
+        </div>
       </div>
     </div>
   </form>
