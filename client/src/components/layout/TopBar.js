@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 import logo from "../../images/logo.png"
 
+//if signin status = true then {data-reveal}
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
@@ -28,6 +29,9 @@ const TopBar = ({ user }) => {
         <ul className="menu vertical medium-horizontal">
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/user-favorites">Favorite Places</Link>
           </li>
         </ul>
       </div>

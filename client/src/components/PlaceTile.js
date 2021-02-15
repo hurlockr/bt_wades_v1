@@ -19,6 +19,7 @@ const PlaceTile = (props) => {
   })
 
   const savePlace = async (placePayload) => {
+    debugger
     try {
       debugger
       const response = await fetch("/api/v1/places", {
