@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import translateServerErrors from "../services/translateServerErrors"
 
 import PlaceTile from "./PlaceTile"
 
 const PlacesList = (props) => {
   const placeDetails = props.location.state.places.yelpQueryResults
-  const [place, setPlace] = useState([])
+  const [place, setPlace] = useState({})
+  const [errors, setErrors] = useState({})
   
   
   

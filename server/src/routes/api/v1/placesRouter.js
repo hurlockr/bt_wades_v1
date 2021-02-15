@@ -2,6 +2,8 @@ import express from "express"
 import objection from "objection"
 const { ValidationError } = objection
 
+import Place from "../../../models/Place.js"
+
 
 const placesRouter = new express.Router()
 
@@ -15,11 +17,20 @@ placesRouter.get("/", async (req, res) => {
 
 placesRouter.post("/", async (req, res) => {
   const { body } = req
+  const userId = req.user.id
   console.log("RESPONSE FROM PLACESROUTER")
   console.log(body)
   try {
-    const place = await body
-    debugger
+    const place = await Place.query().insertAndFetch({
+      distance: body.distance,
+      id: body.id,
+      image: body.image,
+      location: body.location,
+      name: body.name,
+      price: body.price,
+      rating: body.rating,
+      url: body.url
+    })
     return res.status(201).json({ place })
   } catch (error) {
     if (error instanceof ValidationError) {
