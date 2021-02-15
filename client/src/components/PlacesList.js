@@ -1,11 +1,45 @@
-import React from "react"
+import React, { useState } from "react"
 
 import PlaceTile from "./PlaceTile"
 
 const PlacesList = (props) => {
   const placeDetails = props.location.state.places.yelpQueryResults
-  console.log('PLACE DETAILS IN PLACES LIST')
-  console.log(placeDetails)
+  const [place, setPlace] = useState([])
+  
+  
+  
+  const savePlace = async (placePayload) => {
+    try {
+      debugger
+      const response = await fetch("/api/v1/places", {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(placePayload)
+      })
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json()
+          const newErrors = translateServerErrors(body.errors)
+          return setErrors(newErrors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
+        }
+      } else {
+      const body = await response.json()
+      console.log("BODY FROM SAVEPLACE")
+      console.log(body.place)
+      setPlace(body.place)
+      console.log("NEW PLACE STATE")
+      console.log(place)
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
   
   const placeTiles = placeDetails.map(place => {
     return (
@@ -19,6 +53,7 @@ const PlacesList = (props) => {
       price={place.price}
       rating={place.rating}
       url={place.url}
+      savePlace={savePlace}
     />
     )
   })

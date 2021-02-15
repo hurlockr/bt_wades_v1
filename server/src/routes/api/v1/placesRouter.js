@@ -19,6 +19,7 @@ placesRouter.post("/", async (req, res) => {
   console.log(body)
   try {
     const place = await body
+    debugger
     return res.status(201).json({ place })
   } catch (error) {
     if (error instanceof ValidationError) {
