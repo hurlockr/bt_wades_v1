@@ -17,18 +17,31 @@
 
 .top-bar {
   background: #E61C5D;
-
+  display: flex;
+  justify-content: center;
+  
   .menu {
     background: #E61C5D;
     padding: .5rem;
   }
 
   .top-bar-center {
-    flex: 3.75;
+    flex: auto;
+    justify-content: center;
+    
+  }
+
+  .top-bar-right {
+    // min-width: 00px;
   }
 
   a {
     color: $white;
+  }
+
+  a:hover {
+    cursor: pointer;
+    color: #FACF39;
   }
 }
 
@@ -40,6 +53,20 @@ form {
 
 
 //---------PLACE TILE STYLING---------
+.card {
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    max-height: 200px;
+    object-fit: cover;
+
+  svg:hover {
+    color: #FACF39;
+  }
+}
+}
+
 
 //---------PLACE TILE STYLING---------
 
@@ -47,6 +74,7 @@ form {
 //---------PLACES LIST STYLING---------
 .grid-container {
   padding: 1rem;
+
 }
 
 //---------PLACES LIST STYLING---------

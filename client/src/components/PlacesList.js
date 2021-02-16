@@ -62,7 +62,7 @@ const PlacesList = (props) => {
 
   return (
     <div className="grid-container">
-      <div className="grid-x grid-margin-x small-up-2 medium-up-3">
+      <div className="grid-x grid-margin-x small-up-2 medium-up-3 masonry-css">
           {placeTiles}
       </div>
     </div>

@@ -3,6 +3,7 @@ import objection from "objection"
 const { ValidationError } = objection
 
 import Place from "../../../models/Place.js"
+import PlaceSerializer from "../../serializers/placeSerializer.js"
 
 
 const placesRouter = new express.Router()
@@ -18,20 +19,25 @@ placesRouter.get("/", async (req, res) => {
 placesRouter.post("/", async (req, res) => {
   const { body } = req
   const userId = req.user.id
+  const { distance, id, image, location, name, price, rating, url } = body
+  const fixedLocation = location.join(' ')
   console.log("RESPONSE FROM PLACESROUTER")
   console.log(body)
+  debugger
   try {
     const place = await Place.query().insertAndFetch({
-      distance: body.distance,
-      id: body.id,
-      image: body.image,
-      location: body.location,
-      name: body.name,
-      price: body.price,
-      rating: body.rating,
-      url: body.url
+      distance, 
+      id, 
+      image, 
+      location: fixedLocation, 
+      name, 
+      price, 
+      rating, 
+      url
     })
-    return res.status(201).json({ place })
+    const serializedPlace = await PlaceSerializer.getSummary(place)
+    debugger
+    return res.status(201).json({ place: serializedPlace })
   } catch (error) {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data })
@@ -42,3 +48,9 @@ placesRouter.post("/", async (req, res) => {
 })
 
 export default placesRouter
+
+// const letItBeSong = await Place.query().insert({ name: "DumbStarbucks", type: "Restaurant", address: "11 Pumpkin Spice ave.", rating: 2, image: "Imageurl", price: "$$", url: "www.DRUids.com.hotmail.cybermancers", hours: "none"})
+
+// Place.query().insert({
+//   name: body.name, type: "Restaurant", address: "13 Good Luck rd", rating: 3, image: body.image, price: body.price, url: "www.DRUids.com.hotmail.cybermancers", hours: "none"
+// })
