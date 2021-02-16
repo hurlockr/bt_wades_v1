@@ -18,26 +18,25 @@ placesRouter.get("/", async (req, res) => {
 
 placesRouter.post("/", async (req, res) => {
   const { body } = req
-  const userId = req.user.id
+  // const userId = req.user.id
   const { distance, id, image, location, name, price, rating, url } = body
   const fixedLocation = location.join(' ')
   console.log("RESPONSE FROM PLACESROUTER")
   console.log(body)
   debugger
   try {
-    const place = await Place.query().insertAndFetch({
+    const place = await Place.query().insert({
       distance, 
       id, 
       image, 
-      location: fixedLocation, 
+      fixedLocation, 
       name, 
       price, 
       rating, 
       url
     })
-    const serializedPlace = await PlaceSerializer.getSummary(place)
     debugger
-    return res.status(201).json({ place: serializedPlace })
+    return res.status(201).json({ place: place })
   } catch (error) {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data })
