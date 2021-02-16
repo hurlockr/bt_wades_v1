@@ -8,16 +8,18 @@ class Place extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name", "address"],
+      required: ["name", "location"],
       properties: {
         name: { type: "string" },
         type: { type: "string" },
-        address: { type: "string" },
+        location: { type: "string" },
         rating: { type: ["integer", "string"] },
+        distance: { type: ["integer", "string"] },
         image: { type: "string" },
         price: { type: "string" },
         url: { type: "string" },
-        hours: { type: "string" }
+        category: { type: "string" },
+        yelpId: { type: "string" }
       }
     }
   }
