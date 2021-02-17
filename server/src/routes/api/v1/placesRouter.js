@@ -2,7 +2,7 @@ import express from "express"
 import objection from "objection"
 const { ValidationError } = objection
 
-import Place from "../../../models/Place.js"
+import { Place, UserFavoritePlace } from "../../../models/index.js"
 import PlaceSerializer from "../../serializers/placeSerializer.js"
 
 
@@ -21,26 +21,29 @@ placesRouter.post("/", async (req, res) => {
   // const userId = req.user.id
   const { distance, id, image, location, name, price, rating, url } = body
   const fixedLocation = location.join(' ')
+  // const fixedDistance = distance.toString()
+  // const fixedRating = rating.toString()
   console.log("RESPONSE FROM PLACESROUTER")
   console.log(body)
   debugger
   try {
-    const place = await Place.query().insert({
+    const place = await Place.query().insertAndFetch({
       distance, 
-      id, 
+      yelpId: id, 
       image, 
-      fixedLocation, 
-      name, 
+      location: fixedLocation, 
+      name,
       price, 
       rating, 
       url
     })
-    debugger
+    
     return res.status(201).json({ place: place })
   } catch (error) {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data })
     } else {
+      console.error(error)
       return res.status(500).json({ errors: error })
     }
   }

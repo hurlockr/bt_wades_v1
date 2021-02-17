@@ -13,12 +13,11 @@ class Place extends Model {
         name: { type: "string" },
         type: { type: "string" },
         location: { type: "string" },
-        rating: { type: ["integer", "string"] },
-        distance: { type: ["integer", "string"] },
+        rating: { type: "number" },
+        distance: { type: "number" },
         image: { type: "string" },
         price: { type: "string" },
         url: { type: "string" },
-        category: { type: "string" },
         yelpId: { type: "string" }
       }
     }
