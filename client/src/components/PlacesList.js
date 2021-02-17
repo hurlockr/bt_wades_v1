@@ -12,8 +12,7 @@ const PlacesList = (props) => {
   
   const savePlace = async (placePayload) => {
     try {
-      debugger
-      const response = await fetch("/api/v1/places", {
+      const response = await fetch("/api/v1/user-favorites", {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json"

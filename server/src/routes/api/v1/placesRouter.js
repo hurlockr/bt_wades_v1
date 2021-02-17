@@ -18,14 +18,9 @@ placesRouter.get("/", async (req, res) => {
 
 placesRouter.post("/", async (req, res) => {
   const { body } = req
-  // const userId = req.user.id
+  const userId = req.user.id
   const { distance, id, image, location, name, price, rating, url } = body
   const fixedLocation = location.join(' ')
-  // const fixedDistance = distance.toString()
-  // const fixedRating = rating.toString()
-  console.log("RESPONSE FROM PLACESROUTER")
-  console.log(body)
-  debugger
   try {
     const place = await Place.query().insertAndFetch({
       distance, 
