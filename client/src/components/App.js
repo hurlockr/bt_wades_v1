@@ -9,7 +9,8 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
 import YelpRequestForm from "./YelpRequestForm";
-import PlacesList from "./PlacesList"
+import PlacesList from "./PlacesList";
+import FavoritePlacesList from "./FavoritePlacesList";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -33,6 +34,7 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/yelp" component={YelpRequestForm} />
         <Route exact path="/places" render={(props) => <PlacesList {...props}/>} />
+        <Route exact path="/user-favorites" component={FavoritePlacesList} />
       </Switch>
     </Router>
   );
