@@ -4,15 +4,12 @@ import translateServerErrors from "../services/translateServerErrors"
 import FavoritePlaceTile from "./FavoritePlaceTile"
 
 const FavoritePlacesList = (props) => {
-  debugger
   const [places, setPlaces] = useState([])
   const [errors, setErrors] = useState({})
 
   const fetchFavoritePlaces = async () => {
     try {
-      debugger
       const response = await fetch('/api/v1/user-favorites')
-      debugger
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -20,7 +17,6 @@ const FavoritePlacesList = (props) => {
       }
       const favPlaceData = await response.json()
       setPlaces(favPlaceData.favoritePlaces)
-      debugger
     } catch (error) {
       console.error(`Error in fetch: ${err.message}`)
     }
