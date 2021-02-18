@@ -13,6 +13,13 @@
   tab-size: 4;
 }
 
+//---------BACKGROUND IMAGE STYLING---------
+body {
+  background-image: url(../../images/background.png);
+  background-size: cover;
+}
+//---------BACKGROUND IMAGE STYLING---------
+
 //---------TOP BAR STYLING---------
 
 .top-bar {
@@ -31,11 +38,6 @@
     color: $white;
   }
 }
-
-form {
-  padding: 1rem;
-}
-
 //---------TOP BAR STYLING---------
 
 //---------PLACE TILE STYLING---------
@@ -47,4 +49,20 @@ form {
   padding: 1rem;
 }
 
+form {
+  padding: 3.5rem;
+}
+
 //---------PLACES LIST STYLING---------
+
+//---------YELP FORM STYLING---------
+.button {
+  background-color: #eb4a7e;
+  border-color: #ffffff;
+  border-radius: 50px;
+}
+
+.button:hover {
+  background-color: #facf39;
+}
+//---------YELP FORM STYLING---------
