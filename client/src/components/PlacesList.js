@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 
 const PlacesList = (props) => {
-  console.log(props)
   
   return (
     <h1>Hello from Places List!</h1>
