@@ -4,8 +4,6 @@ import PlaceTile from "./PlaceTile"
 
 const PlacesList = (props) => {
   const placeDetails = props.location.state.places.yelpQueryResults
-  console.log('PLACE DETAILS IN PLACES LIST')
-  console.log(placeDetails)
   
   const placeTiles = placeDetails.map(place => {
     return (

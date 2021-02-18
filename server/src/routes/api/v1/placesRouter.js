@@ -1,6 +1,5 @@
 import express from "express"
 
-
 const placesRouter = new express.Router()
 
 placesRouter.get("/", async (req, res) => {

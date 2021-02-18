@@ -16,11 +16,11 @@ const PlaceTile = (props) => {
           </div>
         </div>
         <div className="card-section">
-        <p>Price: {price}</p>
-        <p>Rating: {rating}</p>
-        <p>Address: {getLocation}</p>
-        <a href={url}>See their Business on Yelp</a>
-        <p>Distance from you: {distance}</p>
+          <p>Price: {price}</p>
+          <p>Rating: {rating}</p>
+          <p>Address: {getLocation}</p>
+          <a href={url}>See their Business on Yelp</a>
+          <p>Distance from you: {distance}</p>
         </div>
       </div>
     </div>
