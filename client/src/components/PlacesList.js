@@ -8,8 +8,6 @@ const PlacesList = (props) => {
   const [place, setPlace] = useState({})
   const [errors, setErrors] = useState({})
   
-  
-  
   const savePlace = async (placePayload) => {
     try {
       const response = await fetch("/api/v1/user-favorites", {

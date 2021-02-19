@@ -20,8 +20,6 @@ yelpRouter.post("/", async (req, res) => {
 
   try {
     const yelpQueryResults = await YelpClient.getPlaces(body)
-    console.log('YELP QUERY RESULTS')
-    console.log(yelpQueryResults)
     return res.status(201).json({ yelpQueryResults }) 
   } catch (error) {
     if (error instanceof ValidationError) {
