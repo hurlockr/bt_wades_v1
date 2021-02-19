@@ -114,7 +114,7 @@ return (
             Category:
             <Select
               showSearch
-              style={{ width: 600 }}
+              style={{ width: 430 }}
               placeholder="Select a category"
               optionFilterProp="children"
               onChange={handleCategoryChange}
@@ -143,12 +143,14 @@ return (
           <label htmlFor="price">
             Price:
             <Select
-              style={{ width: 600 }}
+              style={{ width: 430 }}
               placeholder="Select a Price"
               onChange={handlePriceChange}
             >
               <Option value={1}>$</Option>
               <Option value={2}>$$</Option>
+              <Option value={3}>$$$</Option>
+              <Option value={4}>$$$$</Option>
             </Select>
           </label>
         </div>
