@@ -1,5 +1,10 @@
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
+import { Select } from 'antd';
+import YelpCategories from "../../Data/YelpCategories"
+
+
+const { Option } = Select;
 
 
 const YelpRequestForm = (props) => {
@@ -51,6 +56,32 @@ const YelpRequestForm = (props) => {
       />)
   }
 
+  const getCategories = YelpCategories.map(category => {
+    return (
+      <Option
+      key={category}
+      value={category}
+      >{category}</Option>
+    )
+  })
+
+  const handleCategoryChange = value => {
+    setRequestParams({
+      ...requestParams,
+      category: value,
+    })
+    console.log(`selected ${value}`);
+  }
+
+  const handlePriceChange = value => {
+    setRequestParams({
+      ...requestParams,
+      price: value,
+    })
+    console.log(`selected ${value}`);
+  }
+
+
   const handleInputChange = (event) => {
     setRequestParams({ 
       ...requestParams,
@@ -69,7 +100,7 @@ return (
       <div className="grid-x grid-padding-x">
         <div className="medium-6 small-12 cell">
           <label htmlFor="zip">
-            <p>Zipcode:</p>
+            Zipcode:
             <input 
             id="zip"
             type="text"
@@ -82,20 +113,24 @@ return (
         </div>
         <div className="medium-6 small-12 cell">
           <label htmlFor="category">
-            <p>Category:</p>
-            <input 
-            id="category"
-            type="text"
-            name="category"
-            placeholder="what type of place?"
-            onChange={handleInputChange}
-            value={requestParams.category}
-            />
+            Category:
+            <Select
+              showSearch
+              style={{ width: 600 }}
+              placeholder="Select a category"
+              optionFilterProp="children"
+              onChange={handleCategoryChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+            {getCategories}
+            </Select>
           </label>
         </div>
         <div className="medium-6 small-12 cell">
           <label htmlFor="term">
-            <p>Term:</p>
+            Term:
             <input 
             id="term"
             type="text"
@@ -108,15 +143,15 @@ return (
         </div>
         <div className="medium-6 small-12 cell">
           <label htmlFor="price">
-            <p>Price:</p>
-            <input 
-            id="price"
-            type="text"
-            name="price"
-            placeholder="let's discuss the bottom line (numbers signs only)"
-            onChange={handleInputChange}
-            value={requestParams.price}
-            />
+            Price:
+            <Select
+              style={{ width: 600 }}
+              placeholder="Select a Price"
+              onChange={handlePriceChange}
+            >
+              <Option value={1}>$</Option>
+              <Option value={2}>$$</Option>
+            </Select>
           </label>
         </div>
         <div className="button1">
