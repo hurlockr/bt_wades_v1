@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    username: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -88,6 +89,18 @@ const RegistrationForm = () => {
     <div className="grid-container" onSubmit={onSubmit}>
       <h1>Register</h1>
       <form>
+        <div>
+          <label>
+            Username
+            <input
+              type="text"
+              name="username"
+              value={userPayload.username}
+              onChange={onInputChange}
+            />
+            <FormError error={errors.username} />
+          </label>
+        </div>
         <div>
           <label>
             Email
