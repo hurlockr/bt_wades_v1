@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import translateServerErrors from "../services/translateServerErrors"
 
 import FavoritePlaceTile from "./FavoritePlaceTile"
 

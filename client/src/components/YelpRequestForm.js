@@ -79,7 +79,6 @@ const YelpRequestForm = (props) => {
     console.log(`selected ${value}`);
   }
 
-
   const handleInputChange = (event) => {
     setRequestParams({ 
       ...requestParams,
