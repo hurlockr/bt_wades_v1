@@ -3,6 +3,7 @@ import objection from "objection"
 const { ValidationError } = objection
 
 import { Place, UserFavoritePlace } from "../../../models/index.js"
+
 const userFavoritesRouter = new express.Router()
 
 userFavoritesRouter.get("/", async (req, res) => {
@@ -47,6 +48,21 @@ userFavoritesRouter.post("/", async (req, res) => {
       console.error(error)
       return res.status(500).json({ errors: error })
     }
+  }
+})
+
+userFavoritesRouter.delete("/", async (req, res) => {
+  const { id } = req.body
+  try {
+    const placeToDelete = await UserFavoritePlace.query().where({ placeId: id })
+    const userFavId = placeToDelete[0].id
+    await UserFavoritePlace.query().deleteById(userFavId)
+    await Place.query().deleteById(id)
+    console.log("Place Deleted")
+    return res.status(201).json({ id })
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ errors: error })
   }
 })
 
