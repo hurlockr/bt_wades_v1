@@ -3,9 +3,7 @@ import { Redirect } from "react-router-dom"
 import { Select } from 'antd';
 import YelpCategories from "../../Data/YelpCategories"
 
-
 const { Option } = Select;
-
 
 const YelpRequestForm = (props) => {
   const [yelpParams, setYelpParams] = useState({})
