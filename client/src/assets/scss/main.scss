@@ -57,10 +57,12 @@ body {
     width: auto;
     max-height: 200px;
     object-fit: cover;
-
-    svg:hover {
-      color: #facf39;
-    }
+  }
+  svg.fa-heart {
+    color: #c86282b5;
+  }
+  svg.fa-heart:hover {
+    color: #e61c5d;
   }
 }
 
