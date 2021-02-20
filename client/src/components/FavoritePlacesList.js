@@ -25,6 +25,10 @@ const FavoritePlacesList = (props) => {
     fetchFavoritePlaces()
   },[])
 
+  const updateTiles = () => {
+    fetchFavoritePlaces()
+  }
+
   const favPlaceTiles = places.map(place => {
     return (
     <FavoritePlaceTile 
@@ -37,6 +41,7 @@ const FavoritePlacesList = (props) => {
       price={place.price}
       rating={place.rating}
       url={place.url}
+      updateTiles={updateTiles}
     />
     )
   })
