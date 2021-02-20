@@ -22,9 +22,10 @@ userFavoritesRouter.post("/", async (req, res) => {
     const userId = req.user.id
     const { distance, id, image, location, name, price, rating, url } = body
     const fixedLocation = location.join(' ')
+    const roundedDistance = parseInt(distance)
   try {
     const placeData = {
-      distance, 
+      distance: roundedDistance, 
       yelpId: id,
       image, 
       location: fixedLocation, 
@@ -33,7 +34,6 @@ userFavoritesRouter.post("/", async (req, res) => {
       rating, 
       url
     }
-    
     let place = await Place.query().findOne(placeData)
     if (!place) {
       place = await Place.query().insertAndFetch(placeData)

@@ -79,7 +79,6 @@ const YelpRequestForm = (props) => {
     console.log(`selected ${value}`);
   }
 
-
   const handleInputChange = (event) => {
     setRequestParams({ 
       ...requestParams,
@@ -100,12 +99,12 @@ return (
           <label htmlFor="zip">
             Zipcode:
             <input 
-            id="zip"
-            type="text"
-            name="zip"
-            placeholder="what's your zip?"
-            onChange={handleInputChange}
-            value={requestParams.zip}
+              id="zip"
+              type="text"
+              name="zip"
+              placeholder="what's your zip?"
+              onChange={handleInputChange}
+              value={requestParams.zip}
             />
           </label>
         </div>
@@ -130,12 +129,12 @@ return (
           <label htmlFor="term">
             Term:
             <input 
-            id="term"
-            type="text"
-            name="term"
-            placeholder="name of restaurant, type of food, type of venue"
-            onChange={handleInputChange}
-            value={requestParams.term}
+              id="term"
+              type="text"
+              name="term"
+              placeholder="name of restaurant, type of food, type of venue"
+              onChange={handleInputChange}
+              value={requestParams.term}
             />
           </label>
         </div>

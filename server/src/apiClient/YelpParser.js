@@ -15,7 +15,7 @@ class YelpParser {
       let location = business.location.display_address
       let price = business.price
       let category = business.categories[0].title
-      let distance = business.distance
+      let distance = business.distance.toFixed(2)
 
       return {
         id, name, url, rating, image, location, price, category, distance

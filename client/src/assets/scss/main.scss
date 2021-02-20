@@ -14,6 +14,13 @@
   tab-size: 4;
 }
 
+//---------BACKGROUND IMAGE STYLING---------
+body {
+  background-image: url(../../images/background.png);
+  background-size: cover;
+}
+//---------BACKGROUND IMAGE STYLING---------
+
 //---------TOP BAR STYLING---------
 
 .top-bar {
@@ -40,11 +47,6 @@
     color: #facf39;
   }
 }
-
-form {
-  padding: 1rem;
-}
-
 //---------TOP BAR STYLING---------
 
 //---------PLACE TILE STYLING---------
@@ -55,10 +57,12 @@ form {
     width: auto;
     max-height: 200px;
     object-fit: cover;
-
-    svg:hover {
-      color: #facf39;
-    }
+  }
+  svg.fa-heart {
+    color: #c86282b5;
+  }
+  svg.fa-heart:hover {
+    color: #e61c5d;
   }
 }
 
@@ -69,4 +73,20 @@ form {
   padding: 1rem;
 }
 
+form {
+  padding: 3.5rem;
+}
+
 //---------PLACES LIST STYLING---------
+
+//---------YELP FORM STYLING---------
+.button {
+  background-color: #eb4a7e;
+  border-color: #ffffff;
+  border-radius: 50px;
+}
+
+.button:hover {
+  background-color: #facf39;
+}
+//---------YELP FORM STYLING---------

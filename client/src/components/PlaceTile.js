@@ -31,13 +31,13 @@ const PlaceTile = (props) => {
         <p>Address: {getLocation}</p>
         </div>
         <a href={url}>See their Business on Yelp</a>
-        <p>Distance from you: {distance}</p>
+        <p>Distance from you in Km: {distance}</p>
         <FavoriteIcon
         className="fas fa-heart"
         fontSize="large"
         place={place}
         onClick={favoritePlace}
-        style={{ color: pink[400] }}
+
         />
         </div>
       </div>
