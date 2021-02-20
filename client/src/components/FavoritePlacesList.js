@@ -26,7 +26,6 @@ const FavoritePlacesList = (props) => {
   },[])
 
   const updateTiles = () => {
-    debugger
     fetchFavoritePlaces()
   }
 

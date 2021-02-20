@@ -29,11 +29,7 @@ const PlacesList = (props) => {
         }
       } else {
       const body = await response.json()
-      console.log("BODY FROM SAVEPLACE")
-      console.log(body.place)
       setPlace(body.place)
-      console.log("NEW PLACE STATE")
-      console.log(place)
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
