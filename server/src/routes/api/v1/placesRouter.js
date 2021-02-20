@@ -1,4 +1,6 @@
 import express from "express"
+import objection from "objection"
+const { ValidationError } = objection
 
 const placesRouter = new express.Router()
 

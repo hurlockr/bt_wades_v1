@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import "~antd/dist/antd.css";
 // place global css here
 *,
 *::before,
@@ -24,6 +25,8 @@ body {
 
 .top-bar {
   background: #e61c5d;
+  display: flex;
+  justify-content: center;
 
   .menu {
     background: #e61c5d;
@@ -31,16 +34,37 @@ body {
   }
 
   .top-bar-center {
-    flex: 1;
+    flex: auto;
+    justify-content: center;
   }
 
   a {
     color: $white;
   }
+
+  a:hover {
+    cursor: pointer;
+    color: #facf39;
+  }
 }
 //---------TOP BAR STYLING---------
 
 //---------PLACE TILE STYLING---------
+.card {
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    max-height: 200px;
+    object-fit: cover;
+  }
+  svg.fa-heart {
+    color: #c86282b5;
+  }
+  svg.fa-heart:hover {
+    color: #e61c5d;
+  }
+}
 
 //---------PLACE TILE STYLING---------
 

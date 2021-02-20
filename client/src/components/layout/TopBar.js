@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 import logo from "../../images/logo.png"
 
+//if signin status = true then {data-reveal}
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
@@ -23,18 +24,21 @@ const TopBar = ({ user }) => {
   ];
 
   return (
-    <div className="top-bar topbar-center-logo" id="topbar-center-logo">
+    <div className="top-bar" id="topbar-center-logo">
       <div className="top-bar-left">
         <ul className="menu vertical medium-horizontal">
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>
+            <Link to="/user-favorites">Favorite Places</Link>
+          </li>
         </ul>
       </div>
       <div className="top-bar-center">
-        <div className="logo">
+        
           <Link to="/"><img src={logo} alt="Wades Logo" /></Link>
-        </div>
+        
       </div>
       <div className="top-bar-right">
         <ul className="menu vertical medium-horizontal">{user ? authenticatedListItems : unauthenticatedListItems}</ul>

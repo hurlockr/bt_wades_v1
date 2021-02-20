@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import { pink } from '@material-ui/core/colors';
 
 
-const PlaceTile = (props) => {
+const FavoritePlaceTile = (props) => {
+  debugger
   const { distance, id, image, location, name, price, rating, url } = props
-  const getLocation = location.join(' ')
   const [place, setPlace] = useState({})
-
-  const favoritePlace = event => {
-    event.preventDefault()
-    props.savePlace(props)
-  }
   
   return (
     <div className="cell">
@@ -28,17 +21,10 @@ const PlaceTile = (props) => {
         <Typography component="legend">Rating</Typography>
         <Rating name="read-only" value={rating} precision={0.5} readOnly />
         <div className="row">
-        <p>Address: {getLocation}</p>
+        <p>Address: {location}</p>
         </div>
         <a href={url}>See their Business on Yelp</a>
-        <p>Distance from you in Km: {distance}</p>
-        <FavoriteIcon
-        className="fas fa-heart"
-        fontSize="large"
-        place={place}
-        onClick={favoritePlace}
-
-        />
+        <p>Distance from you: {distance}</p>
         </div>
       </div>
       </div>
@@ -47,4 +33,4 @@ const PlaceTile = (props) => {
   )
 }
 
-export default PlaceTile
+export default FavoritePlaceTile
