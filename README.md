@@ -15,11 +15,10 @@
 
 ## Usage
 
-Run the executable in a folder with markdown files
+1. After following the Installation instructions Navigate to in your browser (http://localhost:3000/) to visit the home page
+   ![Home Page](client/src/images/homeScreen.png)
 
-- code goes here
-  Then, navigate to in your browser (http://localhost:3000/)
-- Picture of app homepage goes here
+   ![Tile Screen](client/src/images/tileScreen.png)
 
 ## Technology Used
 
