@@ -115,7 +115,6 @@ return (
             </div>
             <Select
               showSearch
-              style={{ width: 500 }}
               placeholder="Select a category"
               optionFilterProp="children"
               onChange={handleCategoryChange}
@@ -146,7 +145,6 @@ return (
             Price:
             </div>
             <Select
-              style={{ width: 500 }}
               placeholder="Select a Price"
               onChange={handlePriceChange}
             >
