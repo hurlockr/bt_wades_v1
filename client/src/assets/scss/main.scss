@@ -2,6 +2,7 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 @import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 // place global css here
 *,
 *::before,
@@ -16,8 +17,10 @@
 
 //---------BACKGROUND IMAGE STYLING---------
 body {
-  background-image: url(../../images/background.png);
+  background-image: url(../../images/background2.png);
   background-size: cover;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
 }
 //---------BACKGROUND IMAGE STYLING---------
 
@@ -51,6 +54,10 @@ body {
 
 //---------PLACE TILE STYLING---------
 .card {
+  padding: 10px;
+  outline-style: solid;
+  outline-color: #e8d3d9;
+
   img {
     display: inline-block;
     vertical-align: middle;
@@ -63,6 +70,11 @@ body {
   }
   svg.fa-heart:hover {
     color: #e61c5d;
+    cursor: pointer;
+  }
+
+  .card-divider {
+    color: #ba154a;
   }
 }
 
@@ -76,7 +88,6 @@ body {
 form {
   padding: 3.5rem;
 }
-
 //---------PLACES LIST STYLING---------
 
 //---------YELP FORM STYLING---------
@@ -87,6 +98,17 @@ form {
 }
 
 .button:hover {
-  background-color: #facf39;
+  background-color: #7e0f32;
 }
+
+.button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.drop-down {
+  margin: 0;
+  width: 50%;
+}
+
 //---------YELP FORM STYLING---------

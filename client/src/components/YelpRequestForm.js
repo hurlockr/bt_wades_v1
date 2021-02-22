@@ -108,12 +108,14 @@ return (
             />
           </label>
         </div>
-        <div className="medium-6 small-12 cell">
+        <div className="medium-6 small-12 cell drop-down">
           <label htmlFor="category">
+            <div className="drop-down-label">
             Category:
+            </div>
             <Select
               showSearch
-              style={{ width: 430 }}
+              style={{ width: 500 }}
               placeholder="Select a category"
               optionFilterProp="children"
               onChange={handleCategoryChange}
@@ -138,11 +140,13 @@ return (
             />
           </label>
         </div>
-        <div className="medium-6 small-12 cell">
+        <div className="medium-6 small-12 cell drop-down">
           <label htmlFor="price">
+            <div className="drop-down-label">
             Price:
+            </div>
             <Select
-              style={{ width: 430 }}
+              style={{ width: 500 }}
               placeholder="Select a Price"
               onChange={handlePriceChange}
             >
