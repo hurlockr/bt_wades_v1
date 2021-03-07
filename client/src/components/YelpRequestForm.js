@@ -118,7 +118,6 @@ return (
     <div className="grid-container">
       <div className="grid-x grid-padding-x">
         <div className="medium-6 small-12 cell">
-          
           <label htmlFor="zip">
             Zipcode:
             <input 
