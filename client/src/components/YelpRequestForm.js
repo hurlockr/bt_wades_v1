@@ -82,7 +82,7 @@ const YelpRequestForm = (props) => {
   }
 
   const handleInputChange = (event) => {
-    setRequestParams({ 
+    setRequestParams({
       ...requestParams,
       [event.currentTarget.name]: event.currentTarget.value,
     })
