@@ -88,6 +88,22 @@ const YelpRequestForm = (props) => {
     })
   }
 
+  const validateQueryParams = () => {
+    let submitErrors = {}
+    const requiredFields = ["zip", "category", "term", "price"]
+    requiredFields.forEach(field => {
+      if (requestParams[field].trim() === "") {
+        submitErrors = {
+          ...submitErrors,
+          [field]:"is blank"
+        }
+      }
+    })
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
+    }
+  
+
   const handleSubmit = (event) => {
     event.preventDefault()
     queryYelp(requestParams)
