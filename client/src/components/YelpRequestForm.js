@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom"
 import { Select } from "antd";
 import YelpCategories from "../../Data/YelpCategories"
 import ErrorList from "./ErrorList"
+import _ from "lodash"
 
 const { Option } = Select;
 
@@ -91,7 +92,7 @@ const YelpRequestForm = (props) => {
   const validateQueryParams = () => {
     let submitErrors = {}
     const requiredFields = ["zip", "category", "term", "price"]
-    requiredFields.forEach(field => {
+    requiredFields.forEach((field) => {
       if (requestParams[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
@@ -106,15 +107,18 @@ const YelpRequestForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    queryYelp(requestParams)
+    if (validateQueryParams()) {
+      queryYelp(requestParams)
+    }
   }
 
 return (
   <form onSubmit={handleSubmit}>
+    <ErrorList errors={errors} />
     <div className="grid-container">
       <div className="grid-x grid-padding-x">
         <div className="medium-6 small-12 cell">
-          <ErrorList errors={errors} />
+          
           <label htmlFor="zip">
             Zipcode:
             <input 
