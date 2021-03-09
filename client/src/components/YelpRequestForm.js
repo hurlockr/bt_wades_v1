@@ -114,6 +114,7 @@ return (
             Category:
             </div>
             <Select
+              id="category"
               showSearch
               placeholder="Select a category"
               optionFilterProp="children"
@@ -145,6 +146,7 @@ return (
             Price:
             </div>
             <Select
+              id="price"
               placeholder="Select a Price"
               onChange={handlePriceChange}
             >
