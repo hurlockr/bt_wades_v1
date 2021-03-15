@@ -48,6 +48,9 @@ const FavoritePlacesList = (props) => {
 
   return (
     <div className="grid-container">
+      <div className="grid-x">
+        <button className="button cell">Back to Places</button>
+      </div>
       <div className="grid-x grid-margin-x small-up-2 medium-up-3 masonry-css">
           {favPlaceTiles}
       </div>
